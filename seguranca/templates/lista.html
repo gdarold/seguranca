@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Sistema Livraria Videira {% endblock %}
+
+{% block main %}
+
+    <div class="container-fluid">
+        <h3>Lista de Usuários cadastrados</h3>
+              <table class=" table table-hover table-bordered table-striped table-dark">
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+
+
+
+
+
+                    </tr>
+                    <tbody>
+                    {% for livro in Logins %}
+                        <tr>
+                            <td>{{ livro.login }}</td>
+                            <td> {{ livro.password }}</td>
+                            <td> {{ livro.status }}</td>
+
+                            <td> <a href="{% url 'atualiza_login' pk=livro.id %}" class="edit-item">
+
+                                <i class="fas fa-edit"></i></a>
+
+                                <a href="{% url 'deletar_login' pk=livro.id %}" class="trash-item" style=" font-size:20px;color:red">
+
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            </td>
+
+
+
+
+                        </tr>
+
+
+                     {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+
+
+
+
+    <p><a href="{% url 'index' %}" class="btn btn-primary">Volta para pagina inicial</a></p>
+</div>
+
+
+
+{% endblock %}
