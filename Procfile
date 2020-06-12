@@ -1,0 +1,1 @@
+web: gunicorn segurancaInfo.wsgi --log-file - # Needed to login by username
