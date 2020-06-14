@@ -21,19 +21,19 @@
 
                     </tr>
                     <tbody>
-                    {% for livro in Logins %}
+                    {% for log in Logins %}
                         <tr>
-                            <td>{{ livro.nome }}</td>
-                            <td> {{ livro.password }}</td>
-                            <td> {{ livro.salto }}</td>
+                            <td>{{ log.nome }}</td>
+                            <td> {{ log.password }}</td>
+                            <td> {{ log.salto }}</td>
 
-                            <td> {{ livro.status }}</td>
+                            <td> {{ log.status }}</td>
 
                             <td> <a href="#" class="edit-item">
 
                                 <i class="fas fa-edit"></i></a>
 
-                                <a href="#" class="trash-item" style=" font-size:20px;color:red">
+                                <a href="{% url 'deletar_login' log.id %}" class="trash-item" style=" font-size:20px;color:red">
 
                                 <i class="fas fa-trash"></i>
                             </a>
