@@ -43,6 +43,8 @@ class CriaLogin(CreateView):
         login.save()
         return super(CriaLogin, self).form_valid(form)
 
+
+
 # validação das senhas com a biblioteca de regex
 def valida(senha):
     return (
@@ -60,31 +62,45 @@ def valida(senha):
 
 
 def logar_view(request):
+    legal = True
     form = LoginForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         login = form.save(commit=False)
         # pega a senha que veio via formulario, e codifica em utf-8
         senha = login.password.encode('utf-8')
+        print(senha)
         # busca no banco a senha do usuario que esta tentando logar
         login = Login.objects.get(nome=login.nome)
         # resgata o salt que foi salvo no banco
         salt = login.salto
         s = salt[2:31]# retira sujeira do salt b' e no final '
         #print(s)
+        #print(login.password)
+        gambiarra = login.password
+        z = gambiarra[2:62]# retira sujeira do salt b' e no final '
+        #print(z)
         # parte contraditoria, tem outras maneiras
         # pega a senha digitada e cria hast, com ajuda do salt resgatado
         value = bcrypt.hashpw(senha, s.encode('utf-8'))
-        # compara senha do banco com senha de comparaçã
-        if bcrypt.checkpw(senha, value):
+        #print(value)
+        gambiarra2 = str(value)
+        x = gambiarra2[2:62] # retira sujeira do salt b' e no final '
+        #print('x',x)
+        # compara senha do banco com senha de comparação, não funcionou
 
+        #if bcrypt.checkpw(senha, value):
+        if x == z:
+            print("passou")
             return redirect('redireciona')
 
         else:
+            legal = False
+            print('deu pau')
             message = "password or username invalido"
             return render(request, 'logar.html', {'message': message})
-
-    return render(request, 'logar.html', {'form': form})
+    if legal:
+        return render(request, 'logar.html', {'form': form})
 
 
 class ListarLogin(ListView):
