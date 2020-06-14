@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Sistema Livraria Videira {% endblock %}
+{% block title %} Sistema Logins - lista {% endblock %}
 
 {% block main %}
 
@@ -29,11 +29,11 @@
 
                             <td> {{ livro.status }}</td>
 
-                            <td> <a href="{% url 'atualiza_login' pk=livro.id %}" class="edit-item">
+                            <td> <a href="#" class="edit-item">
 
                                 <i class="fas fa-edit"></i></a>
 
-                                <a href="{% url 'deletar_login' pk=livro.id %}" class="trash-item" style=" font-size:20px;color:red">
+                                <a href="#" class="trash-item" style=" font-size:20px;color:red">
 
                                 <i class="fas fa-trash"></i>
                             </a>
