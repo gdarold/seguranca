@@ -7,7 +7,7 @@
     <div class="container">
         <h3>Deletar usuário</h3>
 
-        <h2>Tem certeza que deseja deletar:  {{ login.login }}</h2>
+        <h2>Tem certeza que deseja deletar:  {{ login.nome }}</h2>
         <form method="post" class="form-group">
             {% csrf_token %}
 

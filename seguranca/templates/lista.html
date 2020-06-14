@@ -10,6 +10,8 @@
                     <tr>
                         <th>Usuário</th>
                         <th>Senha</th>
+                        <th>salto</th>
+
                         <th>Status</th>
                         <th>Ações</th>
 
@@ -21,8 +23,10 @@
                     <tbody>
                     {% for livro in Logins %}
                         <tr>
-                            <td>{{ livro.login }}</td>
+                            <td>{{ livro.nome }}</td>
                             <td> {{ livro.password }}</td>
+                            <td> {{ livro.salto }}</td>
+
                             <td> {{ livro.status }}</td>
 
                             <td> <a href="{% url 'atualiza_login' pk=livro.id %}" class="edit-item">

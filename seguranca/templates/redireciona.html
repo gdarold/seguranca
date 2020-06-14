@@ -2,22 +2,23 @@
 
 {% block title %} Sistema Gerados Login Seguro {% endblock %}
 
+
 {% block main %}
 
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
 
+                <h2>Bem vindo, Você passou no teste de validação de senhas</h2>
 
 
-                    <p><a href="{% url 'cadastra_login' %}" class="btn btn-primary">Cadastrar novo Login</a></p>
 
             </div>
              <div class="col-sm-6">
 
 
 
-                    <p><a href="{% url 'logar_login' %}" class="btn btn-primary">Logar</a></p>
+                    <p><a href="{% url 'lista_login' %}" class="btn btn-primary">Lista de logins</a></p>
 
             </div>
         </div>
