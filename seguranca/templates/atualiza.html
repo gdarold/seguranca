@@ -13,13 +13,12 @@
 
             <label>Usuário</label>
             {{ form.nome }}
-            <label>Senha</label>
-            {{ form.password }}
-            <label>salto</label>
-            {{ form.salto }}
 
-            <label>Status</label>
+            <label>status</label>
             {{ form.status }}
+
+            <label>Permissões</label>
+            {{ form.permissions }}
 
 
 
@@ -30,7 +29,7 @@
 
     <p><a href="{% url 'lista_login' %}" class="btn btn-primary">Voltar a lista</a></p>
 
-    <p><a href="{% url 'index' %}" class="btn btn-primary">Volta para pagina inicial</a></p>
+
 
     </div>
 

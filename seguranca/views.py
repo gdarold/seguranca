@@ -8,6 +8,7 @@ from seguranca.forms import LoginForm
 from seguranca.models import Login
 
 
+
 class Index(TemplateView):
     template_name = 'index.html'
 
@@ -17,19 +18,19 @@ class Redirect(TemplateView):
 
 
 class CriaLogin(CreateView):
-    template_name = 'cadastro.html'
-    model = Login()
+    #template_name = 'login_form.html'
+    model = Login
     fields = '__all__'
+
     # interrompe a criação do login para verificar
     def form_valid(self, form):
         login = form.save(commit=False)
-        # validar a senha de acordo com criterios estabelecidos
 
         if valida(login.password):
             print("não deu pau")
 
         else:
-            #devolve mensagem informando que a senha não atende os requisitos
+            # devolve mensagem informando que a senha não atende os requisitos
             mensagem = 'Senha invalida, volte para página anterior e tente novamente'
             return HttpResponse(mensagem)
 
@@ -40,9 +41,9 @@ class CriaLogin(CreateView):
         login.salto = salt
         # cria a criptografia para senha usando biblioteca bcript, senha + salt
         login.password = bcrypt.hashpw(login.password.encode('utf-8'), salt)
+        login.permissions = 'leitura'
         login.save()
         return super(CriaLogin, self).form_valid(form)
-
 
 
 # validação das senhas com a biblioteca de regex
@@ -71,33 +72,39 @@ def logar_view(request):
         senha = login.password.encode('utf-8')
         print(senha)
         # busca no banco a senha do usuario que esta tentando logar
-        login = Login.objects.get(nome=login.nome)
+        try:
+            login = Login.objects.get(nome=login.nome)
+        except:
+            message = "usuario inexistente"
+            return render(request, 'logar.html', {'message': message})
         # resgata o salt que foi salvo no banco
         salt = login.salto
         s = salt[2:31]# retira sujeira do salt b' e no final '
         #print(s)
         #print(login.password)
         gambiarra = login.password
-        z = gambiarra[2:62]# retira sujeira do salt b' e no final '
+        z = gambiarra[2:62]
         #print(z)
         # parte contraditoria, tem outras maneiras
         # pega a senha digitada e cria hast, com ajuda do salt resgatado
         value = bcrypt.hashpw(senha, s.encode('utf-8'))
         #print(value)
         gambiarra2 = str(value)
-        x = gambiarra2[2:62] # retira sujeira do salt b' e no final '
-        #print('x',x)
+        x = gambiarra2[2:62]
+        print('x',x)
         # compara senha do banco com senha de comparação, não funcionou
 
         #if bcrypt.checkpw(senha, value):
         if x == z:
+            acesso = login
+            print(acesso)
             print("passou")
-            return redirect('redireciona')
+            return render(request,'redireciona.html', {'acesso': acesso})
 
         else:
             legal = False
             print('deu pau')
-            message = "password or username invalido"
+            message = "password invalido"
             return render(request, 'logar.html', {'message': message})
     if legal:
         return render(request, 'logar.html', {'form': form})
@@ -109,10 +116,16 @@ class ListarLogin(ListView):
     context_object_name = 'Logins'
 
 
+class ListarLoginSemAcesso(ListView):
+    template_name = "lista2.html"
+    model = Login
+    context_object_name = 'Logis'
+
+
 class AtualizaLogin(UpdateView):
     template_name = "atualiza.html"
     model = Login()
-    fields = '__all__'
+    fields = ['nome', 'status','permissions']
     context_object_name = 'login'
     success_url = reverse_lazy('lista_login')
 

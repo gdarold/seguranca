@@ -13,7 +13,7 @@
                         <th>salto</th>
                         <th>Permissões</th>
                         <th>Status</th>
-                        <th>Ações</th>
+
 
 
 
@@ -21,7 +21,7 @@
 
                     </tr>
                     <tbody>
-                    {% for log in Logins %}
+                    {% for log in Logis %}
                         <tr>
                             <td>{{ log.nome }}</td>
                             <td> {{ log.password }}</td>
@@ -29,16 +29,7 @@
                             <td> {{ log.permissions }}</td>
                             <td> {{ log.status }}</td>
 
-                            <td>
-                                <a href="{% url 'atualiza_login' log.id %}" class="edit-item">
 
-                                <i class="fas fa-edit"></i></a>
-
-                                <a href="{% url 'deletar_login' log.id %}" class="trash-item" style=" font-size:20px;color:red">
-
-                                <i class="fas fa-trash"></i>
-                            </a>
-                            </td>
 
 
 
@@ -54,7 +45,7 @@
 
 
 
-            <p><a href="{% url 'index' %}" class="btn btn-primary">Sair</a></p>
+                <p><a href="{% url 'index' %}" class="btn btn-primary">Sair</a></p>
 
 
 
