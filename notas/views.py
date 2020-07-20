@@ -10,6 +10,11 @@ def notas_list(request):
     persons = Notas.objects.all()
     return render(request, 'notas_list.html', {'notas':persons})
 
+def notas_listAluno(request):
+    persons = Notas.objects.all()
+    return render(request, 'notas_listAluno.html', {'notas':persons})
+
+
 def notas_new(request):
     form = NotasForm(request.POST or None, request.FILES or None)
     if form.is_valid():

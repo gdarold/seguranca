@@ -13,7 +13,7 @@
                         <th>Nota1</th>
                         <th>Nota2</th>
 
-                        <th>Ações</th>
+
 
 
 
@@ -31,13 +31,7 @@
 
 
 
-                            <td>
-                                <a href="{% url 'notas_update' nota.id %}" class="edit-item">
 
-                                <i class="fas fa-edit"></i></a>
-
-
-                            </td>
 
 
 
@@ -52,8 +46,8 @@
                 </table>
 
 
-<a class="btn btn-primary" href="{% url 'notas_create' %}">Novo</a>
-<p><a href="{% url 'professor' %}" class="btn btn-danger">Voltar</a></p>
+<a class="btn btn-success" href="{% url 'aluno' %}">Retornar</a>
+
 
 
 {% endblock %}

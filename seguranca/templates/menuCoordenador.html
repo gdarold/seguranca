@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Sistema Academico ABC {% endblock %}
+
+
+{% block main %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h2>Bem vindo Coordenador</h2>
+
+
+
+            </div>
+             <div class="col-sm-6">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+
+
+                        <p><a href="{% url 'lista_login' %}" class="btn btn-primary">Lista de logins</a></p>
+
+                         <p><a href="{% url 'person_list' %}" class="btn btn-primary">Lista de Pessoas</a></p>
+
+                         <p><a href="{% url 'curso_list' %}" class="btn btn-primary">Lista de Cursos</a></p>
+                         <p><a href="{% url 'disciplinas_list' %}" class="btn btn-primary">Lista de Disciplinas</a></p>
+                        <p><a href="{% url 'index' %}" class="btn btn-danger">Sair</a></p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+
+
+
+{% endblock %}

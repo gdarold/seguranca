@@ -1,12 +1,15 @@
 from django.urls import path
 
-from curso.views import curso_list, curso_delete, curso_new, curso_update
+from disciplinas.views import disciplinas_new, disciplinas_update, disciplinas_list, disciplinas_delete, \
+    disciplinasProfessor_list
 
 urlpatterns = [
 
-    path('list/',curso_list, name="curso_list"),
-    path('new/', curso_new, name="curso_create"),
-    path('update/<int:id>/', curso_update, name="curso_update"),
-    path('delete/<int:id>/',curso_delete, name="curso_delete"),
+    path('list/',disciplinas_list, name="disciplinas_list"),
+    path('profelist/',disciplinasProfessor_list, name="disciplinasProfessor_list"),
+
+    path('new/', disciplinas_new, name="disciplinas_create"),
+    path('update/<int:id>/', disciplinas_update, name="disciplinas_update"),
+    path('delete/<int:id>/',disciplinas_delete, name="disciplinas_delete"),
 
     ]

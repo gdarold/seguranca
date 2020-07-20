@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Sistema Gerados Login Seguro {% endblock %}
+{% block title %} Sistema Academico ABC {% endblock %}
 
 
 {% block main %}
@@ -13,7 +13,7 @@
                 <br>
                 <br>
 
-                <h2>Bem vindo {{ acesso.nome }} <br> Você passou no teste de validação de senhas</h2>
+                <h2>Bem vindo {{ acesso.nome }}</h2>
 
 
 
@@ -25,11 +25,13 @@
                     <br>
 
 
-                    {% if acesso.permissions == 'proprietário' %}
+                    {% if acesso.permissions == 'Coordenador' %}
 
-                        <p><a href="{% url 'lista_login' %}" class="btn btn-primary">Lista de logins</a></p>
-                    {% elif acesso.permissions == 'leitura' %}
-                         <p><a href="{% url 'lista_login2' %}" class="btn btn-primary">Lista de logins</a></p>
+                        <p><a href="{% url 'cordena' %}" class="btn btn-primary">Acessar área coordenador</a></p>
+                    {% elif acesso.permissions == 'Professor' %}
+                         <p><a href="{% url 'professor' %}" class="btn btn-primary">Acessar área professor</a></p>
+                    {% elif acesso.permissions == 'Aluno' %}
+                         <p><a href="{% url 'aluno' %}" class="btn btn-primary">Acessar área aluno</a></p>
                     {% else %}
                         <p>Você não tem permissão para acesso</p>
                     {% endif %}
@@ -38,7 +40,7 @@
         </div>
     </div>
 
-
+    <p><a href="{% url 'index' %}" class="btn btn-danger">Sair</a></p>
 
     </div>
 

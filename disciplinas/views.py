@@ -10,6 +10,10 @@ def disciplinas_list(request):
     persons = Disciplina.objects.all()
     return render(request, 'disciplinas_list.html', {'disciplinas':persons})
 
+def disciplinasProfessor_list(request):
+    persons = Disciplina.objects.all()
+    return render(request, 'disciplinasProfessor_list.html', {'disciplinas':persons})
+
 def disciplinas_new(request):
     form = DisciplinaForm(request.POST or None, request.FILES or None)
     if form.is_valid():

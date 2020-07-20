@@ -17,6 +17,16 @@ class Redirect(TemplateView):
     template_name = 'redireciona.html'
 
 
+class Coordenador(TemplateView):
+    template_name = 'menuCoordenador.html'
+    
+class Professor(TemplateView):
+    template_name = 'menuProfessor.html'
+
+class Aluno(TemplateView):
+    template_name = 'menuAluno.html'
+
+
 class CriaLogin(CreateView):
     #template_name = 'login_form.html'
     model = Login
