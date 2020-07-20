@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista pessoas - lista {% endblock %}
+
+{% block main %}
+
+<br>
+
+<table class=" table table-hover table-bordered table-striped table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>user</th>
+                        <th>age</th>
+                        <th>bio</th>
+                        <th>funcao</th>
+                        <th>Ações</th>
+
+
+
+
+
+                    </tr>
+                    <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td>{{ person.first_name }}</td>
+                            <td> {{ person.last_name }}</td>
+                            <td> {{ person.user }}</td>
+                            <td> {{ person.age }}</td>
+                            <td> {{ person.bio }}</td>
+                            <td> {{ person.funcao }}</td>
+
+
+
+                            <td>
+                                <a href="{% url 'persons_update' person.id %}" class="edit-item">
+
+                                <i class="fas fa-edit"></i></a>
+
+                                <a href="{% url 'persons_delete' person.id %}" class="trash-item" style=" font-size:20px;color:red">
+
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            </td>
+
+
+
+
+                        </tr>
+
+
+                     {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+<a href="{% url 'person_create' %}">Novo</a>
+
+
+{% endblock %}

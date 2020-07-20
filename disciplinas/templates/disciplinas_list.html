@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista Disciplinas {% endblock %}
+
+{% block main %}
+
+<br>
+
+<table class=" table table-hover table-bordered table-striped table-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Descrição</th>
+                        <th>CH</th>
+                        <th>Alunos</th>
+
+                        <th>Ações</th>
+
+
+
+
+
+                    </tr>
+                    <tbody>
+                    {% for nota in disciplinas %}
+                        <tr>
+                            <td>{{ nota.nome }}</td>
+                            <td> {{ nota.descricao }}</td>
+                            <td> {{ nota.cargahoraria }}</td>
+                            <td> {{ nota.alunos }}</td>
+
+
+
+
+                            <td>
+                                <a href="{% url 'disciplinas_update' nota.id %}" class="edit-item">
+
+                                <i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'disciplinas_delete' nota.id %}" class="trash-item" style=" font-size:20px;color:red">
+
+                                <i class="fas fa-trash"></i>
+                            </a>
+
+
+                            </td>
+
+
+
+
+                        </tr>
+
+
+                     {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+<a href="{% url 'disciplinas_create' %}">Novo</a>
+
+
+
+{% endblock %}

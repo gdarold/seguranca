@@ -27,7 +27,7 @@ SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =config('DEBUG',default=False, cast=bool)
 
-ALLOWED_HOSTS = ['seguranca-info.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'seguranca',
+    'pessoa',
+    'curso',
+    'disciplinas',
+    'notas',
+
 ]
 
 MIDDLEWARE = [

@@ -16,9 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from seguranca import urls as seguranca_urls
+from pessoa import urls as pessoas_urls
+from notas import urls as notas_urls
+from curso import urls as curso_urls
+
+from disciplinas import urls as disciplinas_urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(seguranca_urls)),
+    path('pessoa/', include(pessoas_urls)),
+    path('notas/', include(notas_urls)),
+    path('disciplinas/', include(disciplinas_urls)),
+    path('curso/', include(curso_urls)),
+
 
 ]

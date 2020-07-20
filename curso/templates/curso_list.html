@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista de cursos {% endblock %}
+
+{% block main %}
+
+<br>
+
+<table class=" table table-hover table-bordered table-striped table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>coordenador</th>
+                        <th>Disciplinas</th>
+
+
+                        <th>Ações</th>
+
+
+
+
+
+                    </tr>
+                    <tbody>
+                    {% for nota in curso %}
+                        <tr>
+                            <td>{{ nota.nome }}</td>
+                            <td> {{ nota.coordenador }}</td>
+                            <td> {{ nota.disciplinas }}</td>
+
+
+
+
+
+                            <td>
+                                <a href="{% url 'curso_update' nota.id %}" class="edit-item">
+
+                                <i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'curso_delete' nota.id %}" class="trash-item" style=" font-size:20px;color:red">
+
+                                <i class="fas fa-trash"></i>
+                            </a>
+
+
+                            </td>
+
+
+
+
+                        </tr>
+
+
+                     {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+<a href="{% url 'curso_create' %}">Novo</a>
+
+
+
+{% endblock %}
